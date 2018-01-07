@@ -1,0 +1,8 @@
+{
+  "name": "part-E-wallet",
+  "description": "A node.js app for ecological partying",
+  "repository": "https://github.com/Pie-Jie/part-e-wallet",
+  "logo": "",
+  "keywords": ["node", "express", "heroku", "ecological", "partying"],
+  "image": "heroku/nodejs"
+}
