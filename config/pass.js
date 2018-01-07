@@ -1,9 +1,7 @@
 var LocalStrategy = require('passport-local').Strategy;
 var FacebookStrategy = require('passport-facebook').Strategy;
 
-// load up the user model
 var User = require('../models/user');
-
 var auth = require('./auth');
 
 module.exports = function(passport) {
