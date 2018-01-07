@@ -37,6 +37,7 @@ module.exports = function(app, passport) {
 	});
 };
 
+
 function isLoggedIn(req, res, next) {
 
 	if (req.isAuthenticated())
@@ -44,3 +45,4 @@ function isLoggedIn(req, res, next) {
 
 	res.redirect('/');
 }
+

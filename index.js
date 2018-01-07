@@ -1,29 +1,35 @@
 var express = require('express');
 var app = express();
 var PORT = process.env.PORT || 3000;
-var pass = require('passport');
+var passport = require('passport');
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
 var bodyParser = require('body-parser');
-var cookieSession = require('cookie-session');
+var session = require('express-session');
 
 var configDB = require('./config/db');
+
 mongoose.connect(configDB.url);
+console.log(`database collections ${mongoose.connection.collections}`);
 
-require('./config/pass')(pass);
-    app 
-        .use(express.static('./public'))
-        .use(cookieParser())
-        .use(bodyParser.json())
-        .use(bodyParser.urlencoded({ extended: false }))
-        .set('view engine', 'ejs')
-        .use(cookieSession({ secret: 'hellofriendfsociety' }))
-        .use(pass.initialize())
-        .use(pass.session())
-        .use(flash());
+require('./config/passport')(passport);
+     
+ app.use(express.static('./public'));
+ app.use(cookieParser());
+ app.use(bodyParser.json());
+ app.use(bodyParser.urlencoded({ extended: true }));
+ app.set('view engine', 'ejs');
+ app.use(session({ 
+     secret: 'hellofriendfsociety',
+     resave: true,
+     saveUninitialized: true
+ }));
+ app.use(passport.initialize());
+ app.use(passport.session());
+ app.use(flash());
 
-require('./config/routes')(app, pass);
+require('./config/routes')(app, passport);
 app.listen(PORT);
 console.log(`Server listening on ${PORT}`);
    
