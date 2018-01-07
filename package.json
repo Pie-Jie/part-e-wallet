@@ -1,0 +1,24 @@
+{
+  "name": "part-e-wallet",
+  "version": "1.0.0",
+  "description": "Node.js app for ecological partying",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Pie-Jie/part-e-wallet.git"
+  },
+  "author": "Pieter-Jan Desmadryl",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/Pie-Jie/part-e-wallet/issues"
+  },
+  "homepage": "https://github.com/Pie-Jie/part-e-wallet#readme",
+  "dependencies": {
+    "ejs": "^2.5.7",
+    "express": "^4.16.2",
+    "qr-image": "^3.2.0"
+  }
+}
