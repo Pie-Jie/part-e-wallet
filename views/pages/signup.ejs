@@ -1,45 +1,21 @@
-<!DOCTYPE html>
-<html>
-    <head>
-        <title>Node.js Getting Started on Heroku</title>
-        <link rel="stylesheet" type="text/css" href="/css/screen.css" />
-    </head>
-    <body>
-        <header><h1>part-E-wallet</h1></header>
-    <div class="container">
-    <div class="col-sm-6 col-sm-offset-3">
+<% include ../parts/header.ejs %>
+    <article class="signup">
+        <header><h1>Signup</h1></header>
 
-    <h1><span class="fa fa-sign-in"></span> Signup</h1>
+        <% if (message.length > 0) { %>
+           <h1>Errors</h1>
+           <div><%= message %></div>
+        <% } %>
 
-    <% if (message.length > 0) { %>
-        <div class="alert alert-danger"><%= message %></div>
-    <% } %>
-
-    <!-- LOGIN FORM -->
-    <form action="/signup" method="post">
-        <div class="form-group">
+        <form action="/signup" method="post">
             <label>Email</label>
-            <input type="text" class="form-control" name="email">
-        </div>
-        <div class="form-group">
+            <input type="text" name="email">
             <label>Password</label>
-            <input type="password" class="form-control" name="password">
-        </div>
+            <input type="password" name="password">
+            <button type="submit">Signup</button>
+        </form>
 
-        <button type="submit" class="btn btn-warning btn-lg">Signup</button>
-    </form>
-
-    <hr>
-
-    <p>Already have an account? <a href="/login">Login</a></p>
-    <p>Or go <a href="/">home</a>.</p>
-
-    <div class="text-center">
-        <p>A demo by <a href="http://scotch.io">Scotch</a>.</p>
-        <p>Visit the <a href="http://scotch.io/tutorials/javascript/easy-node-authentication-setup-and-local">tutorial</a>.</p>
-    </div>
-
-</div>
-</div>
-    </body>
-</html>
+        <p>Already have an account? <a href="/login">Login</a></p>
+        <p>Or go <a href="/">home</a>.</p>
+    </article>
+<% include ../parts/footer.ejs %>

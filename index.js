@@ -1,6 +1,6 @@
 var express = require('express');
 var app = express();
-var PORT = process.env.PORT || 3000;
+var port = process.env.PORT || 3000;
 var passport = require('passport');
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
@@ -30,6 +30,6 @@ require('./config/passport')(passport);
  app.use(flash());
 
 require('./config/routes')(app, passport);
-app.listen(PORT);
-console.log(`Server listening on ${PORT}`);
+app.listen(port);
+console.log(`Server listening on ${port}`);
    
