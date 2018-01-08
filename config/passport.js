@@ -14,7 +14,7 @@ module.exports = function(passport) {
         });
     });
     
-    passport.use('local-login', new LocalStrategy({
+    passport.use('login', new LocalStrategy({
         // by default, local strategy uses username and password, we will override with email
         usernameField : 'email',
         passwordField : 'password',
@@ -46,7 +46,7 @@ module.exports = function(passport) {
         });
 
     }));
-    passport.use('local-signup', new LocalStrategy({
+    passport.use('signup', new LocalStrategy({
         usernameField : 'email',
         passwordField : 'password',
         passReqToCallback : true
@@ -107,7 +107,6 @@ module.exports = function(passport) {
                     }
                 });
             } else {
-                // user is logged in and already has a local account. Ignore signup. (You should log out before trying to create a new account, user!)
                 return done(null, req.user);
             }
 
