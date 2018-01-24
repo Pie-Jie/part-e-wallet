@@ -2,6 +2,7 @@ var express = require('express');
 var app = express();
 var port = process.env.PORT || 3000;
 var passport = require('passport');
+var events = require('passport');
 var flash = require('connect-flash');
 var mongoose = require('mongoose');
 var cookieParser = require('cookie-parser');
@@ -14,6 +15,7 @@ mongoose.connect(configDB.url);
 console.log(`database collections ${mongoose.connection.collections}`);
 
 require('./config/passport')(passport);
+require('./config/events')(events);
      
  app.use(express.static('./public'));
  app.use(cookieParser());
@@ -27,9 +29,12 @@ require('./config/passport')(passport);
  }));
  app.use(passport.initialize());
  app.use(passport.session());
+ app.use(events.initialize());
+ app.use(events.session());
  app.use(flash());
 
-require('./config/routes')(app, passport);
+require('./config/routes')(app, passport, events);
+//require('./config/routes')(app, passport);
 app.listen(port);
 console.log(`Server listening on ${port}`);
    

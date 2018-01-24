@@ -1,0 +1,13 @@
+<% include ../parts/header.ejs %>
+<% include ../parts/nav.ejs %>
+    <article class="myevents">
+       <nav>
+            <ul>
+                <li><a href="/newevent">Create a new event</a></li>
+                <li><a href="/myevents/:<%= user._id %>/attending">Attending</a></li>
+                <li><a href="/myevents/:<%= user._id %>/organizing" class="active">Organizing</a></li>
+            </ul>
+        </nav>
+        <header><h3>Organizing events</h3></header>
+    </article>  
+<% include ../parts/footer.ejs %>

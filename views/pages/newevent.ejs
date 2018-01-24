@@ -1,0 +1,25 @@
+<% include ../parts/header.ejs %>
+<% include ../parts/nav.ejs %>
+    <article class="myevents">
+       <nav>
+            <ul>
+                <li><a href="/newevent" class="active">Create a new event</a></li>
+                <li><a href="/events/:<%= user._id %>/attending">Attending</a></li>
+                <li><a href="/events/:<%= user._id %>/organizing">Organizing</a></li>
+            </ul>
+        </nav>
+        <header><h3>Create new event</h3></header>
+        
+        <% if (message.length > 0) { %>
+           <h1>Errors</h1>
+           <div><%= message %></div>
+        <% } %>
+        <form action="/newevent" method="post">
+            <label for="name">Name</label>
+            <input type="text" name="name">
+            <label>Date</label>
+            <input type="date" name="date">
+            <button type="submit">Create</button>
+        </form>
+    </article>  
+<% include ../parts/footer.ejs %>
